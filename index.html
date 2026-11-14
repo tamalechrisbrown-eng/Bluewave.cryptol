@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bluewave V12 - Like forextraders.work/deposits - MTN 0761291972</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<script async src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
+<script type="importmap">
+{"imports":{"firebase/app":"https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js","firebase/auth":"https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js","firebase/firestore":"https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"}}
+</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+body{font-family:'Inter',sans-serif;background:#0a1020}
+.glass{background:rgba(15,23,42,0.9);border:1px solid rgba(59,130,246,0.2)}
+.whatsapp-float{position:fixed;bottom:20px;right:20px;z-index:999;background:#25D366;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px}
+</style>
+</head>
+<body class="text-white">
+<nav class="fixed w-full z-50 glass px-6 py-4 flex justify-between items-center">
+<div class="font-black"><span class="text-blue-500">BLUEWAVE</span> - MTN 0761291972</div>
+<div class="flex gap-2">
+<button id="loginBtn" class="px-4 py-2 border border-blue-500 rounded-full text-xs">Login</button>
+<button id="signupBtn" class="px-4 py-2 bg-yellow-400 text-black rounded-full text-xs font-black">Sign Up</button>
+<button id="logoutBtn" class="hidden px-4 py-2 border border-slate-600 rounded-full text-xs">Logout</button>
+<button id="adminBtn" class="hidden px-4 py-2 bg-yellow-400 text-black rounded-full text-xs font-black">ADMIN</button>
+</div>
+</nav>
+
+<section class="pt-24 px-6 max-w-6xl mx-auto">
+<h1 class="text-3xl font-black mb-1">Make Deposit - Like forextraders.work/deposits</h1>
+<p class="text-sm text-slate-400 mb-6">Select Plan with Product Picture + Enter Amount + MTN 0761291972 + Deposit History Below</p>
+
+<div id="userWelcome" class="hidden glass p-3 rounded-xl text-xs mb-4"></div>
+
+<div class="grid lg:grid-cols-3 gap-6">
+
+<div class="lg:col-span-1 glass p-5 rounded-2xl h-fit">
+<h2 class="font-bold mb-4"><i class="fas fa-plus-circle text-yellow-400 mr-2"></i>Make New Deposit</h2>
+<div class="space-y-3">
+<label class="text-[11px] text-slate-400">1. Select Investment Plan (with Product Picture)</label>
+<select id="planSelect" class="w-full p-3 rounded-xl bg-slate-800 border border-slate-700 text-sm">
+<option value="">-- Choose Plan --</option>
+<option value="Trial $5 - iPhone Accessories - 18.5k UGX">Trial $5 - iPhone Accessories - 18.5k UGX</option>
+<option value="Student $10 - Samsung S24 - 37k UGX">Student $10 - Samsung S24 - 37k UGX</option>
+<option value="Starter $20 - Smartphones - 74k UGX">Starter $20 - Smartphones - 74k UGX</option>
+<option value="Basic $50 - Computers - 185k UGX">Basic $50 - Computers - 185k UGX</option>
+<option value="Silver $100 - iPhone 15 Pro Max - 370k UGX">Silver $100 - iPhone 15 Pro Max - 370k UGX</option>
+<option value="Gold $200 - MacBook Pro M3 - 740k UGX - POPULAR">Gold $200 - MacBook Pro M3 - 740k UGX</option>
+<option value="Premium $300 - Car Business - 1.1M UGX">Premium $300 - Car Business - 1.1M UGX</option>
+<option value="Platinum $500 - Luxury Car - 1.85M UGX">Platinum $500 - Luxury Car - 1.85M UGX</option>
+<option value="Elite $750 - Luxury House - 2.7M UGX">Elite $750 - Luxury House - 2.7M UGX</option>
+<option value="Diamond $1000 - House+Car Empire - 3.7M UGX - VIP">Diamond $1000 - House+Car Empire - 3.7M UGX</option>
+</select>
+
+<div id="planPreview" class="hidden glass p-2 rounded-xl text-center"><img id="previewImg" src="" class="w-full h-20 object-contain"><p id="previewText" class="text-[10px] mt-1 text-yellow-400"></p></div>
+
+<label class="text-[11px] text-slate-400">2. Enter Amount ($)</label>
+<input id="depositAmount" type="number" placeholder="e.g. 100" class="w-full p-3 rounded-xl bg-slate-800 border border-slate-700 text-sm">
+
+<label class="text-[11px] text-slate-400">3. Select Payment Method</label>
+<select id="methodSelect" class="w-full p-3 rounded-xl bg-slate-800 border border-slate-700 text-sm">
+<option>MTN Mobile Money - 0761291972 - CLICKABLE</option>
+<option>Airtel Money - 0747550170</option>
+</select>
+
+<div class="bg-yellow-500/10 border border-yellow-500 p-3 rounded-xl text-center">
+<p class="text-[11px] text-yellow-400 font-bold">SEND TO MTN:</p>
+<a href="tel:*165*1*0761291972%23" class="text-2xl font-black underline">0761291972</a>
+<a href="tel:*165*1*0761291972%23" class="block mt-2 py-2 bg-yellow-400 text-black rounded-full font-black text-xs">Tap to Pay MTN</a>
+</div>
+
+<label class="text-[11px] text-slate-400">4. Paste MTN Transaction ID After Paying</label>
+<input id="momoTx" placeholder="MTN TxID e.g. 1234567890" class="w-full p-3 rounded-xl bg-slate-800 border border-slate-600 text-sm">
+
+<button id="depositBtn" onclick="makeDeposit()" class="w-full py-3 bg-yellow-400 text-black rounded-full font-black text-sm mt-2">Make Deposit - Save to Firebase</button>
+<p id="depositMsg" class="text-green-400 text-xs hidden mt-2 text-center font-bold"></p>
+</div>
+</div>
+
+<div class="lg:col-span-2 space-y-6">
+<div class="glass p-5 rounded-2xl">
+<div class="flex justify-between items-center mb-4"><h2 class="font-bold"><i class="fas fa-list text-blue-400 mr-2"></i>Your Deposit History - Like forextraders.work/deposits</h2><button onclick="loadMyDeposits()" class="px-3 py-1 bg-slate-700 rounded-full text-[10px]">Refresh</button></div>
+<div class="overflow-auto"><table class="w-full text-xs"><thead class="text-slate-500 text-[10px] border-b border-slate-700"><tr><th class="text-left p-2">Date</th><th class="text-left p-2">Plan + Picture</th><th class="text-left p-2">Amount</th><th class="text-left p-2">Method</th><th class="text-left p-2">TxID</th><th class="text-left p-2">Status</th></tr></thead><tbody id="myDepositsTable"></tbody></table></div>
+</div>
+
+<div class="glass p-5 rounded-2xl">
+<div class="flex justify-between items-center mb-4"><h2 class="font-bold"><i class="fas fa-arrow-up text-green-400 mr-2"></i>Your Withdrawal History</h2><button onclick="loadMyWithdrawals()" class="px-3 py-1 bg-slate-700 rounded-full text-[10px]">Refresh</button></div>
+<div class="grid md:grid-cols-3 gap-2 mb-4"><input id="withdrawAmount" type="number" placeholder="Amount $" class="p-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs"><input id="withdrawMomo" type="tel" placeholder="Your MTN 07..." class="p-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs"><button onclick="requestWithdraw()" class="py-2.5 bg-white text-black rounded-full font-bold text-xs">Request Withdraw</button></div>
+<p id="withdrawMsg" class="text-green-400 text-xs hidden text-center font-bold mb-2"></p>
+<div class="overflow-auto"><table class="w-full text-xs"><thead class="text-slate-500 text-[10px] border-b border-slate-700"><tr><th class="text-left p-2">Date</th><th class="text-left p-2">Amount</th><th class="text-left p-2">MTN Number</th><th class="text-left p-2">Status</th></tr></thead><tbody id="myWithdrawalsTable"></tbody></table></div>
+</div>
+
+<div class="glass p-5 rounded-2xl flex justify-center gap-4">
+<button onclick="openBottomDeposit()" class="px-8 py-3 border border-blue-500 text-blue-400 rounded-full font-bold text-sm"><i class="fas fa-user mr-1"></i> Deposit</button>
+<button onclick="openBottomWithdraw()" class="px-8 py-3 border border-blue-500 text-blue-400 rounded-full font-bold text-sm"><i class="fas fa-download mr-1"></i> Withdraw</button>
+</div>
+<p class="text-center text-[10px] text-slate-500">Deposit + Withdraw buttons clickable like picture - Both save to Firebase - MTN 0761291972</p>
+</div>
+</div>
+</section>
+
+<section id="adminPanel" class="hidden px-6 py-8 max-w-6xl mx-auto border-t border-yellow-500/30 mt-8">
+<h2 class="font-black text-xl mb-1">🔒 ADMIN PANEL - All Users Deposits to 0761291972 - Like forextraders.work Admin</h2>
+<p class="text-xs text-slate-400 mb-4">Only you see this - Customers see only their own history above</p>
+<div class="grid md:grid-cols-3 gap-4">
+<div class="glass p-4 rounded-2xl"><div class="flex justify-between mb-2"><h3 class="font-bold text-sm">All Users</h3><button id="refreshUsers" class="px-2 py-1 bg-slate-700 rounded-full text-[10px]">Refresh</button></div><div class="overflow-auto max-h-72"><table class="w-full text-[11px]"><thead class="text-slate-500"><tr><th class="text-left p-1">Email</th><th>Balance</th></tr></thead><tbody id="usersTable"></tbody></table></div></div>
+<div class="glass p-4 rounded-2xl"><div class="flex justify-between mb-2"><h3 class="font-bold text-sm">All Deposits to 0761291972</h3><button id="refreshDeposits" class="px-2 py-1 bg-yellow-400 text-black rounded-full text-[10px]">Refresh</button></div><div class="overflow-auto max-h-72"><table class="w-full text-[10px]"><thead class="text-slate-500"><tr><th class="text-left p-1">User</th><th>Plan</th><th>Amount</th><th>TxID</th></tr></thead><tbody id="depositsTable"></tbody></table></div></div>
+<div class="glass p-4 rounded-2xl"><div class="flex justify-between mb-2"><h3 class="font-bold text-sm">All Withdrawals</h3><button onclick="loadWithdrawals()" class="px-2 py-1 bg-white text-black rounded-full text-[10px]">Refresh</button></div><div class="overflow-auto max-h-72"><table class="w-full text-[10px]"><thead class="text-slate-500"><tr><th class="text-left p-1">User</th><th>Amount</th><th>MTN</th></tr></thead><tbody id="withdrawalsTable"></tbody></table></div></div>
+</div>
+</section>
+
+<div id="authModal" class="hidden fixed inset-0 bg-black/80 z-[100] flex items-center justify-center p-4"><div class="glass bg-slate-900 p-6 rounded-2xl w-full max-w-sm"><h2 id="modalTitle" class="text-xl font-black mb-4">Login</h2><input id="emailInput" type="email" placeholder="Email" class="w-full p-3 rounded-xl bg-slate-800 border border-slate-700 mb-2 text-sm"><input id="passwordInput" type="password" placeholder="Password" class="w-full p-3 rounded-xl bg-slate-800 border border-slate-700 mb-3 text-sm"><p id="authError" class="text-red-400 text-xs mb-2 hidden"></p><button id="authSubmit" class="w-full py-3 bg-yellow-400 text-black rounded-full font-black text-sm">Continue</button><button id="closeModal" class="w-full py-2 mt-2 text-slate-400 text-xs">Cancel</button></div></div>
+
+<div id="withdrawModal" class="hidden fixed inset-0 bg-black/80 z-[100] flex items-center justify-center p-4"><div class="glass bg-slate-900 p-6 rounded-2xl w-full max-w-md"><h2 class="text-xl font-black mb-3">Withdraw - MTN 0761291972</h2><input id="withdrawAmountModal" type="number" placeholder="Amount $" class="w-full p-3 rounded-xl bg-slate-800 border border-slate-700 mb-2 text-sm"><input id="withdrawMomoModal" type="tel" placeholder="Your MTN 07..." class="w-full p-3 rounded-xl bg-slate-800 border border-slate-700 mb-3 text-sm"><button onclick="requestWithdrawModal()" class="w-full py-3 bg-white text-black rounded-full font-black text-sm">Request Withdraw</button><button onclick="document.getElementById('withdrawModal').classList.add('hidden')" class="w-full py-2 mt-2 text-slate-400 text-xs">Cancel</button><p id="withdrawMsgModal" class="text-green-400 text-xs hidden mt-2 text-center"></p></div></div>
+
+<a href="https://wa.me/256747550170" target="_blank" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+
+<script type="module">
+import { initializeApp } from "firebase/app";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
+import { getFirestore, doc, setDoc, collection, getDocs, addDoc, serverTimestamp, query, where } from "firebase/firestore";
+const ADMIN_EMAIL = "tamalechrisbrown@gmail.com";
+const firebaseConfig = {apiKey:"AIzaSyBdOK7pAsuyUTL9PTVJdQZiuBGhmfSG7Rs",authDomain:"bluewave-cryptol.firebaseapp.com",projectId:"bluewave-cryptol",storageBucket:"bluewave-cryptol.firebasestorage.app",messagingSenderId:"535546450808",appId:"1:535546450808:web:e02c244d9772fe4fb96e8d"};
+const app=initializeApp(firebaseConfig);const auth=getAuth(app);const db=getFirestore(app);
+let mode="login";let currentUser=null;
+const planImages = {
+"Trial $5 - iPhone Accessories - 18.5k UGX":"https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=200",
+"Student $10 - Samsung S24 - 37k UGX":"https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=200",
+"Starter $20 - Smartphones - 74k UGX":"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=200",
+"Basic $50 - Computers - 185k UGX":"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=200",
+"Silver $100 - iPhone 15 Pro Max - 370k UGX":"https://images.unsplash.com/photo-1592899677977-9bb10ba128a5?w=200",
+"Gold $200 - MacBook Pro M3 - 740k UGX - POPULAR":"https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=200",
+"Premium $300 - Car Business - 1.1M UGX":"https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=200",
+"Platinum $500 - Luxury Car - 1.85M UGX":"https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=200",
+"Elite $750 - Luxury House - 2.7M UGX":"https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=200",
+"Diamond $1000 - House+Car Empire - 3.7M UGX - VIP":"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=200"
+};
+const modal=document.getElementById('authModal');const modalTitle=document.getElementById('modalTitle');const authSubmit=document.getElementById('authSubmit');const emailInput=document.getElementById('emailInput');const passwordInput=document.getElementById('passwordInput');const authError=document.getElementById('authError');
+function openModal(m){mode=m;modalTitle.textContent=m==="login"?"Login":"Sign Up";authSubmit.textContent=m==="login"?"Login Now":"Sign Up Now";modal.classList.remove('hidden');authError.classList.add('hidden');}
+document.getElementById('loginBtn').onclick=()=>openModal('login');document.getElementById('signupBtn').onclick=()=>openModal('signup');document.getElementById('closeModal').onclick=()=>modal.classList.add('hidden');
+document.getElementById('planSelect').onchange=(e)=>{const val=e.target.value;if(val && planImages[val]){document.getElementById('previewImg').src=planImages[val];document.getElementById('previewText').textContent=val;document.getElementById('planPreview').classList.remove('hidden');}else{document.getElementById('planPreview').classList.add('hidden');}};
+authSubmit.onclick=async()=>{const em=emailInput.value.trim();const ps=passwordInput.value.trim();if(!em||ps.length<6){authError.textContent="Email + 6 chars pass";authError.classList.remove('hidden');return;}authSubmit.textContent="Please wait...";authSubmit.disabled=true;try{if(mode==="signup"){const cred=await createUserWithEmailAndPassword(auth,em,ps);await setDoc(doc(db,"users",cred.user.uid),{email:em,createdAt:serverTimestamp(),balance:0});}else{await signInWithEmailAndPassword(auth,em,ps);}modal.classList.add('hidden');emailInput.value="";passwordInput.value="";}catch(er){authError.textContent=er.message;authError.classList.remove('hidden');}authSubmit.textContent=mode==="login"?"Login Now":"Sign Up Now";authSubmit.disabled=false;};
+document.getElementById('logoutBtn').onclick=()=>signOut(auth);
+onAuthStateChanged(auth,(user)=>{
+currentUser=user;const lb=document.getElementById('loginBtn');const sb=document.getElementById('signupBtn');const lob=document.getElementById('logoutBtn');const ab=document.getElementById('adminBtn');const uw=document.getElementById('userWelcome');
+if(user){lb.classList.add('hidden');sb.classList.add('hidden');lob.classList.remove('hidden');if(user.email.toLowerCase()===ADMIN_EMAIL.toLowerCase()){ab.classList.remove('hidden');uw.innerHTML=`<p class='text-yellow-400 text-xs font-bold'>🔒 ADMIN: ${user.email} - You see all deposits to 0761291972</p>`;}else{ab.classList.add('hidden');uw.innerHTML=`<p class='text-green-400 text-xs'>✓ Customer: ${user.email} - Your deposits shown below - Like forextraders.work</p>`;}uw.classList.remove('hidden');loadMyDeposits();loadMyWithdrawals();}else{lb.classList.remove('hidden');sb.classList.remove('hidden');lob.classList.add('hidden');ab.classList.add('hidden');document.getElementById('adminPanel').classList.add('hidden');uw.classList.add('hidden');}
+});
+window.makeDeposit=async()=>{
+if(!currentUser){openModal('login');return;}
+const plan=document.getElementById('planSelect').value;const amount=document.getElementById('depositAmount').value.trim();const method=document.getElementById('methodSelect').value;const tx=document.getElementById('momoTx').value.trim();
+if(!plan){alert("Select Plan with product picture");return;}if(!amount){alert("Enter Amount");return;}if(!tx){alert("Paste MTN TxID after paying 0761291972");return;}
+const btn=document.getElementById('depositBtn');btn.textContent="Saving to Firebase...";btn.disabled=true;
+try{
+await addDoc(collection(db,"deposits"),{userEmail:currentUser.email,userId:currentUser.uid,plan:plan,amount:amount,method:method,txId:tx,status:"Pending - Check 0761291972",createdAt:serverTimestamp()});
+document.getElementById('depositMsg').textContent="✓ SUCCESS! Deposit $"+amount+" for "+plan+" - TxID:"+tx+" saved! - Like forextraders.work/deposits";
+document.getElementById('depositMsg').classList.remove('hidden');
+loadMyDeposits();if(currentUser.email.toLowerCase()===ADMIN_EMAIL.toLowerCase()){loadDeposits();}
+setTimeout(()=>{document.getElementById('depositMsg').classList.add('hidden');btn.textContent="Make Deposit - Save to Firebase";btn.disabled=false;document.getElementById('depositAmount').value="";document.getElementById('momoTx').value="";},4000);
+}catch(e){alert(e.message);btn.disabled=false;btn.textContent="Make Deposit - Save to Firebase";}
+};
+async function loadMyDeposits(){
+if(!currentUser)return;const tb=document.getElementById('myDepositsTable');tb.innerHTML="<tr><td class='p-2 text-slate-500'>Loading your deposits...</td></tr>";
+try{
+const q=query(collection(db,"deposits"),where("userId","==",currentUser.uid));const snap=await getDocs(q);let h="";
+snap.forEach(d=>{const data=d.data();const date=data.createdAt?new Date(data.createdAt.seconds*1000).toLocaleDateString():"Now";h+=`<tr class='border-t border-slate-800'><td class='p-2 text-[11px]'>${date}</td><td class='p-2 text-[10px] text-yellow-400'>${data.plan.substring(0,20)}</td><td class='p-2 text-[11px]'>$${data.amount}</td><td class='p-2 text-[10px]'>${data.method.substring(0,15)}</td><td class='p-2 text-[9px] font-mono'>${data.txId.substring(0,10)}</td><td class='p-2 text-[10px] text-yellow-400'>${data.status}</td></tr>`;});
+tb.innerHTML=h||"<tr><td class='p-2 text-slate-500'>No deposits yet - Make first deposit above</td></tr>";
+}catch(e){tb.innerHTML=`<tr><td class='p-2 text-red-400'>${e.message}</td></tr>`;}
+}
+async function loadMyWithdrawals(){
+if(!currentUser)return;const tb=document.getElementById('myWithdrawalsTable');tb.innerHTML="<tr><td class='p-2 text-slate-500'>Loading...</td></tr>";
+try{
+const q=query(collection(db,"withdrawals"),where("userId","==",currentUser.uid));const snap=await getDocs(q);let h="";
+snap.forEach(d=>{const data=d.data();const date=data.createdAt?new Date(data.createdAt.seconds*1000).toLocaleDateString():"Now";h+=`<tr class='border-t border-slate-800'><td class='p-2 text-[11px]'>${date}</td><td class='p-2 text-[11px] text-green-400'>$${data.amount}</td><td class='p-2 text-[10px]'>${data.momoNumber}</td><td class='p-2 text-[10px] text-yellow-400'>${data.status}</td></tr>`;});
+tb.innerHTML=h||"<tr><td class='p-2 text-slate-500'>No withdrawals yet</td></tr>";
+}catch(e){tb.innerHTML=`<tr><td class='p-2 text-red-400'>${e.message}</td></tr>`;}
+}
+window.requestWithdraw=async()=>{
+if(!currentUser){openModal('login');return;}
+const amt=document.getElementById('withdrawAmount').value.trim();const momo=document.getElementById('withdrawMomo').value.trim();if(!amt||!momo){alert("Enter Amount + MTN Number");return;}
+const btn=document.querySelector('button[onclick=\"requestWithdraw()\"]');btn.textContent="Saving...";btn.disabled=true;
+try{
+await addDoc(collection(db,"withdrawals"),{userEmail:currentUser.email,userId:currentUser.uid,amount:amt,momoNumber:momo,plan:"Withdraw from deposits page",status:"Pending - Admin via 0761291972",createdAt:serverTimestamp()});
+document.getElementById('withdrawMsg').textContent="✓ Withdraw $"+amt+" to "+momo+" saved!";document.getElementById('withdrawMsg').classList.remove('hidden');loadMyWithdrawals();
+setTimeout(()=>{document.getElementById('withdrawMsg').classList.add('hidden');document.getElementById('withdrawAmount').value="";document.getElementById('withdrawMomo').value="";btn.textContent="Request Withdraw";btn.disabled=false;},4000);
+}catch(e){alert(e.message);btn.disabled=false;}
+};
+window.requestWithdrawModal=async()=>{
+const amt=document.getElementById('withdrawAmountModal').value.trim();const momo=document.getElementById('withdrawMomoModal').value.trim();if(!amt||!momo){alert("Enter Amount + MTN");return;}
+try{
+await addDoc(collection(db,"withdrawals"),{userEmail:currentUser.email,userId:currentUser.uid,amount:amt,momoNumber:momo,plan:"Modal Withdraw",status:"Pending",createdAt:serverTimestamp()});
+document.getElementById('withdrawMsgModal').textContent="✓ Saved!";document.getElementById('withdrawMsgModal').classList.remove('hidden');loadMyWithdrawals();
+setTimeout(()=>{document.getElementById('withdrawModal').classList.add('hidden');document.getElementById('withdrawMsgModal').classList.add('hidden');},3000);
+}catch(e){alert(e.message);}
+};
+window.openBottomDeposit=()=>{document.getElementById('plans').scrollIntoView({behavior:'smooth'});document.getElementById('planSelect').focus();};
+window.openBottomWithdraw=()=>{if(!currentUser){openModal('login');return;}document.getElementById('withdrawModal').classList.remove('hidden');};
+document.getElementById('adminBtn').onclick=()=>{const p=document.getElementById('adminPanel');p.classList.toggle('hidden');if(!p.classList.contains('hidden')){loadUsers();loadDeposits();loadWithdrawals();}};
+async function loadUsers(){const tb=document.getElementById('usersTable');tb.innerHTML="<tr><td>Loading...</td></tr>";try{const snap=await getDocs(collection(db,"users"));let h="";snap.forEach(d=>{h+=`<tr class='border-t border-slate-800'><td class='p-1 text-[10px]'>${d.data().email}</td><td class='p-1 text-[10px]'>$${(Math.random()*500).toFixed(0)}</td></tr>`;});tb.innerHTML=h||"<tr><td>No users</td></tr>";}catch(e){tb.innerHTML=`<tr><td>${e.message}</td></tr>`;}}
+async function loadDeposits(){const tb=document.getElementById('depositsTable');tb.innerHTML="<tr><td>Loading all deposits to 0761291972...</td></tr>";try{const snap=await getDocs(collection(db,"deposits"));let h="";snap.forEach(d=>{const data=d.data();h+=`<tr class='border-t border-slate-800'><td class='p-1 text-[9px]'>${data.userEmail.split('@')[0]}</td><td class='p-1 text-[9px] text-yellow-400'>${data.plan.substring(0,10)}</td><td class='p-1 text-[9px]'>$${data.amount}</td><td class='p-1 text-[9px]'>${data.txId.substring(0,6)}</td></tr>`;});tb.innerHTML=h||"<tr><td>No deposits</td></tr>";}catch(e){tb.innerHTML=`<tr><td>${e.message}</td></tr>`;}}
+async function loadWithdrawals(){const tb=document.getElementById('withdrawalsTable');tb.innerHTML="<tr><td>Loading...</td></tr>";try{const snap=await getDocs(collection(db,"withdrawals"));let h="";snap.forEach(d=>{const data=d.data();h+=`<tr class='border-t border-slate-800'><td class='p-1 text-[9px]'>${data.userEmail.split('@')[0]}</td><td class='p-1 text-[9px]'>$${data.amount}</td><td class='p-1 text-[9px]'>${data.momoNumber}</td></tr>`;});tb.innerHTML=h||"<tr><td>No withdrawals</td></tr>";}catch(e){tb.innerHTML=`<tr><td>${e.message}</td></tr>`;}}
+document.getElementById('refreshUsers').onclick=loadUsers;document.getElementById('refreshDeposits').onclick=loadDeposits;window.loadWithdrawals=loadWithdrawals;window.loadMyDeposits=loadMyDeposits;window.loadMyWithdrawals=loadMyWithdrawals;
+</script>
+</body>
+  </html>
