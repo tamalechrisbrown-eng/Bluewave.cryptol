@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bluewave Crypto - Final V9 - MTN 0761291972</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<script async src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
+<script type="importmap">
+{"imports":{"firebase/app":"https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js","firebase/auth":"https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js","firebase/firestore":"https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"}}
+</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+body{font-family:'Inter',sans-serif}
+.gradient-bg{background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 50%,#0f172a 100%)}
+.glass{background:rgba(255,255,255,0.05);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1)}
+.whatsapp-float{position:fixed;bottom:20px;right:20px;z-index:999;background:#25D366;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 4px 20px rgba(0,0,0,0.5)}
+.plan-img{transition:transform 0.3s}
+.plan-card:hover .plan-img{transform:scale(1.05)}
+</style>
+</head>
+<body class="bg-slate-950 text-white">
+<nav class="fixed w-full z-50 glass px-4 py-3 flex justify-between items-center">
+<div class="font-black text-lg"><span class="text-blue-500">BLUEWAVE</span> CRYPTO</div>
+<div class="flex gap-2">
+<button id="loginBtn" class="px-3 py-1.5 border border-blue-500 rounded-full text-xs">Login</button>
+<button id="signupBtn" class="px-3 py-1.5 bg-blue-600 rounded-full text-xs font-bold">Sign Up</button>
+<button id="logoutBtn" class="hidden px-3 py-1.5 bg-red-600 rounded-full text-xs">Logout</button>
+<button id="adminBtn" class="hidden px-3 py-1.5 bg-yellow-600 rounded-full text-xs font-black animate-pulse">ADMIN</button>
+</div>
+</nav>
+
+<section class="gradient-bg pt-24 pb-10 px-6 text-center">
+<h1 class="text-3xl md:text-5xl font-black mb-3">Invest in Real Products<br>iPhone | Samsung | Cars | Houses<br><span class="text-yellow-400">MTN MoMo: 0761291972</span></h1>
+<p class="text-slate-300 text-sm max-w-xl mx-auto mb-3">Each plan has real product picture - Click to invest - MTN One-Click Pay</p>
+<div id="userWelcome" class="hidden glass max-w-md mx-auto p-3 rounded-xl mb-4 text-sm"></div>
+</section>
+
+<section id="plans" class="px-4 py-8 max-w-6xl mx-auto">
+<h2 class="text-2xl font-black text-center mb-2">10 Investment Plans With Product Pictures Inside</h2>
+<p class="text-center text-xs text-slate-400 mb-6">Product picture + Deposit button in same card - Firebase saves everything</p>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+<div class="plan-card glass p-0 rounded-2xl border border-green-500/30 overflow-hidden">
+<img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=500" class="plan-img w-full h-36 object-cover" alt="iPhone Accessories">
+<div class="p-4"><h3 class="font-bold text-sm">Trial $5 - iPhone Accessories</h3><p class="text-xl font-black my-1">$5 <span class="text-xs text-slate-400">~18,500 UGX</span></p><p class="text-[11px] text-slate-400">Return $5.4 in 3 Days - Profit 8%</p><button onclick="openDeposit('Trial $5 - iPhone Accessories - 18.5k UGX')" class="w-full mt-3 py-2.5 bg-green-600 rounded-lg font-bold text-xs"><i class="fas fa-mobile-alt mr-1"></i> Deposit & Invest</button></div>
+</div>
+
+<div class="plan-card glass p-0 rounded-2xl border border-green-500/30 overflow-hidden">
+<img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=500" class="plan-img w-full h-36 object-cover" alt="Samsung">
+<div class="p-4"><h3 class="font-bold text-sm">Student $10 - Samsung Phones</h3><p class="text-xl font-black my-1">$10 <span class="text-xs text-slate-400">~37,000 UGX</span></p><p class="text-[11px] text-slate-400">Return $11 in 7 Days - Profit 10%</p><button onclick="openDeposit('Student $10 - Samsung Phones - 37k UGX')" class="w-full mt-3 py-2.5 bg-green-700 rounded-lg font-bold text-xs"><i class="fas fa-mobile-alt mr-1"></i> Deposit & Invest</button></div>
+</div>
+
+<div class="plan-card glass p-0 rounded-2xl border border-slate-700 overflow-hidden">
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500" class="plan-img w-full h-36 object-cover" alt="Smartphones">
+<div class="p-4"><h3 class="font-bold text-sm">Starter $20 - Smartphones</h3><p class="text-xl font-black my-1">$20 <span class="text-xs text-slate-400">~74,000 UGX</span></p><p class="text-[11px] text-slate-400">Return $22.4 in 10 Days - Profit 12%</p><button onclick="openDeposit('Starter $20 - Smartphones - 74k UGX')" class="w-full mt-3 py-2.5 bg-blue-600 rounded-lg font-bold text-xs"><i class="fas fa-mobile mr-1"></i> Deposit & Invest</button></div>
+</div>
+
+<div class="plan-card glass p-0 rounded-2xl border border-slate-700 overflow-hidden">
+<img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500" class="plan-img w-full h-36 object-cover" alt="Computers">
+<div class="p-4"><h3 class="font-bold text-sm">Basic $50 - Computers & Laptops</h3><p class="text-xl font-black my-1">$50 <span class="text-xs text-slate-400">~185,000 UGX</span></p><p class="text-[11px] text-slate-400">Return $57.5 in 15 Days - Profit 15%</p><button onclick="openDeposit('Basic $50 - Computers - 185k UGX')" class="w-full mt-3 py-2.5 bg-blue-700 rounded-lg font-bold text-xs"><i class="fas fa-laptop mr-1"></i> Deposit & Invest</button></div>
+</div>
+
+<div class="plan-card glass p-0 rounded-2xl border border-slate-700 overflow-hidden">
+<img src="https://images.unsplash.com/photo-1592899677977-9bb10ba128a5?w=500" class="plan-img w-full h-36 object-cover" alt="iPhone 15 Pro">
+<div class="p-4"><h3 class="font-bold text-sm">Silver $100 - iPhone 15 Pro Max</h3><p class="text-xl font-black my-1">$100 <span class="text-xs text-slate-400">~370,000 UGX</span></p><p class="text-[11px] text-slate-400">Return $120 in 20 Days - Profit 20%</p><button onclick="openDeposit('Silver $100 - iPhone 15 Pro Max - 370k UGX')" class="w-full mt-3 py-2.5 bg-slate-700 rounded-lg font-bold text-xs"><i class="fab fa-apple mr-1"></i> Deposit & Invest</button></div>
+</div>
+
+<div class="plan-card glass p-0 rounded-2xl border-2 border-yellow-500 relative bg-yellow-500/10 overflow-hidden">
+<span class="absolute top-2 left-2 bg-yellow-500 text-black text-[9px] px-2 py-1 rounded-full font-black z-10">MOST POPULAR</span>
+<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500" class="plan-img w-full h-36 object-cover" alt="MacBook">
+<div class="p-4"><h3 class="font-bold text-sm">Gold $200 - MacBook Pro M3</h3><p class="text-xl font-black my-1">$200 <span class="text-xs text-slate-400">~740,000 UGX</span></p><p class="text-[11px] text-yellow-300">Return $250 in 15 Days - Profit 25% BEST!</p><button onclick="openDeposit('Gold $200 - MacBook Pro M3 - 740k UGX - POPULAR')" class="w-full mt-3 py-2.5 bg-yellow-500 text-black rounded-lg font-black text-xs">Deposit & Invest</button></div>
+</div>
+
+<div class="plan-card glass p-0 rounded-2xl border border-purple-500/30 overflow-hidden">
+<img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=500" class="plan-img w-full h-36 object-cover" alt="Car Parts Business">
+<div class="p-4"><h3 class="font-bold text-sm">Premium $300 - Car Spare Parts Business</h3><p class="text-xl font-black my-1">$300 <span class="text-xs text-slate-400">~1,100,000 UGX</span></p><p class="text-[11px] text-slate-400">Return $390 in 25 Days - Profit 30%</p><button onclick="openDeposit('Premium $300 - Car Business - 1.1M UGX')" class="w-full mt-3 py-2.5 bg-purple-600 rounded-lg font-bold text-xs"><i class="fas fa-car mr-1"></i> Deposit & Invest</button></div>
+</div>
+
+<div class="plan-card glass p-0 rounded-2xl border border-purple-500/50 overflow-hidden">
+<img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=500" class="plan-img w-full h-36 object-cover" alt="Luxury Car">
+<div class="p-4"><h3 class="font-bold text-sm">Platinum $500 - Luxury Cars</h3><p class="text-xl font-black my-1">$500 <span class="text-xs text-slate-400">~1,850,000 UGX</span></p><p class="text-[11px] text-slate-400">Return $675 in 30 Days - Profit 35%</p><button onclick="openDeposit('Platinum $500 - Luxury Cars - 1.85M UGX')" class="w-full mt-3 py-2.5 bg-purple-700 rounded-lg font-bold text-xs"><i class="fas fa-car-side mr-1"></i> Deposit & Invest</button></div>
+</div>
+
+<div class="plan-card glass p-0 rounded-2xl border border-orange-500/50 overflow-hidden">
+<img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=500" class="plan-img w-full h-36 object-cover" alt="Luxury House">
+<div class="p-4"><h3 class="font-bold text-sm">Elite $750 - Luxury Houses</h3><p class="text-xl font-black my-1">$750 <span class="text-xs text-slate-400">~2,700,000 UGX</span></p><p class="text-[11px] text-slate-400">Return $1087 in 30 Days - Profit 45%</p><button onclick="openDeposit('Elite $750 - Luxury Houses - 2.7M UGX')" class="w-full mt-3 py-2.5 bg-orange-600 rounded-lg font-bold text-xs"><i class="fas fa-home mr-1"></i> Deposit & Invest</button></div>
+</div>
+
+<div class="plan-card glass p-0 rounded-2xl border-2 border-yellow-400 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 overflow-hidden">
+<span class="absolute top-2 right-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-black text-[9px] px-2 py-1 rounded-full font-black z-10">VIP MAX</span>
+<img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=500" class="plan-img w-full h-36 object-cover" alt="House and Car Empire">
+<div class="p-4"><h3 class="font-bold text-sm text-yellow-400">Diamond $1000 - House + Car Empire</h3><p class="text-xl font-black my-1">$1000 <span class="text-xs text-slate-400">~3,700,000 UGX</span></p><p class="text-[11px] text-yellow-200">Return $1500 in 30 Days - Profit 50% MAX RETURN!</p><button onclick="openDeposit('Diamond $1000 - House+Car Empire - 3.7M UGX - VIP')" class="w-full mt-3 py-2.5 bg-gradient-to-r from-yellow-400 to-orange-500 text-black rounded-lg font-black text-xs">Deposit & Invest</button></div>
+</div>
+
+</div>
+</section>
+
+<section id="withdraw" class="px-4 py-8 max-w-2xl mx-auto">
+<div class="glass p-6 rounded-2xl border border-green-500/30">
+<h2 class="text-xl font-black mb-1 text-center">Withdraw Your Profit - MTN MoMo</h2>
+<p class="text-xs text-slate-400 text-center mb-4">Withdraw profit to your MTN number - Admin sends via 0761291972</p>
+<div class="space-y-3">
+<input id="withdrawAmount" type="number" placeholder="Amount in $ e.g. 11, 25, 100" class="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 text-sm">
+<input id="withdrawMomo" type="tel" placeholder="Your MTN Number e.g. 07XXXXXXXX" class="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 text-sm">
+<button id="withdrawBtn" onclick="requestWithdraw()" class="w-full py-3 bg-green-600 rounded-lg font-black text-sm hover:bg-green-700">Request Withdrawal - Save to Firebase</button>
+<p id="withdrawMsg" class="text-green-400 text-xs hidden text-center font-bold"></p>
+</div>
+</div>
+</section>
+
+<section id="adminPanel" class="hidden px-4 py-8 max-w-6xl mx-auto border-t-2 border-yellow-500 bg-slate-900/80">
+<h2 class="text-2xl font-black mb-1 text-yellow-400">🔒 ADMIN PANEL - PRIVATE - MTN 0761291972</h2>
+<p class="text-xs text-slate-300 mb-1">Only visible to ADMIN_EMAIL - Customers CANNOT see this - You control all deposits/withdrawals here</p>
+<p class="text-[10px] text-slate-500 mb-4">Change ADMIN_EMAIL at top of code to your email</p>
+<div class="grid md:grid-cols-3 gap-4">
+<div class="glass p-4 rounded-2xl border border-blue-500/30"><h3 class="font-bold text-sm mb-2">👥 All Users <button id="refreshUsers" class="ml-2 px-2 py-1 bg-blue-600 rounded text-[10px]">Refresh</button></h3><div class="overflow-auto max-h-72"><table class="w-full text-xs"><thead class="text-slate-500"><tr><th class="text-left p-1">Email</th></tr></thead><tbody id="usersTable"></tbody></table></div></div>
+<div class="glass p-4 rounded-2xl border border-yellow-500/30"><h3 class="font-bold text-sm mb-2">💰 Deposits to 0761291972 <button id="refreshDeposits" class="ml-2 px-2 py-1 bg-yellow-600 text-black rounded text-[10px]">Refresh</button></h3><div class="overflow-auto max-h-72"><table class="w-full text-xs"><thead class="text-slate-500"><tr><th class="text-left p-1">User</th><th class="text-left p-1">Plan+Picture</th><th class="text-left p-1">TxID</th></tr></thead><tbody id="depositsTable"></tbody></table></div></div>
+<div class="glass p-4 rounded-2xl border border-green-500/30"><h3 class="font-bold text-sm mb-2">📤 Withdrawals - You send via 0761291972 <button onclick="loadWithdrawals()" class="ml-2 px-2 py-1 bg-green-600 rounded text-[10px]">Refresh</button></h3><div class="overflow-auto max-h-72"><table class="w-full text-xs"><thead class="text-slate-500"><tr><th class="text-left p-1">User</th><th class="text-left p-1">Amount</th><th class="text-left p-1">MTN Number</th></tr></thead><tbody id="withdrawalsTable"></tbody></table></div></div>
+</div>
+</section>
+
+<div id="authModal" class="hidden fixed inset-0 bg-black/80 z-[100] flex items-center justify-center p-4">
+<div class="glass bg-slate-900 p-6 rounded-2xl w-full max-w-sm border border-blue-500/30"><h2 id="modalTitle" class="text-xl font-black mb-4">Login to Invest</h2><input id="emailInput" type="email" placeholder="Your Email" class="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 mb-2 text-sm"><input id="passwordInput" type="password" placeholder="Password (6+ chars)" class="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 mb-3 text-sm"><p id="authError" class="text-red-400 text-xs mb-2 hidden"></p><button id="authSubmit" class="w-full py-3 bg-blue-600 rounded-lg font-bold text-sm">Continue</button><button id="closeModal" class="w-full py-2 mt-2 text-slate-400 text-xs">Cancel</button></div>
+</div>
+
+<div id="depositModal" class="hidden fixed inset-0 bg-black/80 z-[100] flex items-center justify-center p-4">
+<div class="glass bg-slate-900 p-6 rounded-2xl w-full max-w-md border border-yellow-500/30">
+<h2 class="text-xl font-black mb-1">Pay MTN MoMo - 0761291972</h2>
+<p class="text-sm mb-1">You selected: <span id="selectedPlan" class="text-yellow-400 font-bold"></span></p>
+<p class="text-[11px] text-slate-400 mb-3">Product picture from plan is included in this investment</p>
+<div class="bg-yellow-500/20 border border-yellow-500 p-4 rounded-xl my-3 text-center">
+<h3 class="font-black text-yellow-400 text-sm">SEND MONEY TO MTN:</h3>
+<a href="tel:*165*1*0761291972%23" class="block text-3xl font-black text-white mt-2 underline decoration-yellow-400">0761291972</a>
+<p class="text-xs text-green-400 font-bold mt-1">TAP NUMBER TO OPEN MTN MENU: *165*0761291972#</p>
+<a href="tel:*165*1*0761291972%23" class="block w-full mt-3 py-3 bg-yellow-500 text-black rounded-xl font-black text-center text-sm">📱 CLICK TO PAY MTN NOW</a>
+</div>
+<input id="momoTx" placeholder="Paste your MTN Transaction ID after paying" class="w-full p-3 rounded-lg bg-slate-800 border border-slate-600 text-sm">
+<button id="depositBtn" onclick="submitDeposit('MTN 0761291972 - With Product Picture')" class="w-full mt-3 py-3 bg-yellow-500 text-black rounded-lg font-black text-sm">✓ I PAID - VERIFY & SAVE TO FIREBASE</button>
+<button onclick="document.getElementById('depositModal').classList.add('hidden')" class="w-full py-2 mt-2 text-slate-400 text-xs">Cancel</button>
+<p id="depositMsg" class="text-green-400 text-xs mt-2 hidden text-center font-bold"></p>
+</div>
+</div>
+
+<a href="https://wa.me/256747550170" target="_blank" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+
+<script type="module">
+import { initializeApp } from "firebase/app";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
+import { getFirestore, doc, setDoc, collection, getDocs, addDoc, serverTimestamp } from "firebase/firestore";
+
+// ===== CONFIG - CHANGE ADMIN EMAIL HERE =====
+const ADMIN_EMAIL = "tamalechrisbrown@gmail.com"; // <- CHANGE TO YOUR ADMIN EMAIL
+// ============================================
+
+const firebaseConfig = {apiKey:"AIzaSyBdOK7pAsuyUTL9PTVJdQZiuBGhmfSG7Rs",authDomain:"bluewave-cryptol.firebaseapp.com",projectId:"bluewave-cryptol",storageBucket:"bluewave-cryptol.firebasestorage.app",messagingSenderId:"535546450808",appId:"1:535546450808:web:e02c244d9772fe4fb96e8d"};
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
+const db=getFirestore(app);
+
+let mode="login";let currentPlan="";let currentUser=null;
+const modal=document.getElementById('authModal');const modalTitle=document.getElementById('modalTitle');const authSubmit=document.getElementById('authSubmit');const emailInput=document.getElementById('emailInput');const passwordInput=document.getElementById('passwordInput');const authError=document.getElementById('authError');
+
+function openModal(m){mode=m;modalTitle.textContent=m==="login"?"Login to Your Account":"Create New Account";authSubmit.textContent=m==="login"?"Login Now":"Sign Up Now";modal.classList.remove('hidden');authError.classList.add('hidden');}
+document.getElementById('loginBtn').onclick=()=>openModal('login');
+document.getElementById('signupBtn').onclick=()=>openModal('signup');
+document.getElementById('closeModal').onclick=()=>modal.classList.add('hidden');
+
+authSubmit.onclick=async()=>{
+const email=emailInput.value.trim();const pass=passwordInput.value.trim();
+if(!email||pass.length<6){authError.textContent="Enter valid email + password 6+ chars";authError.classList.remove('hidden');return;}
+authSubmit.textContent="Please wait... Connecting to Firebase...";authSubmit.disabled=true;
+try{
+if(mode==="signup"){
+const cred=await createUserWithEmailAndPassword(auth,email,pass);
+await setDoc(doc(db,"users",cred.user.uid),{email:email,createdAt:serverTimestamp(),balance:0});
+} else {
+await signInWithEmailAndPassword(auth,email,pass);
+}
+modal.classList.add('hidden');emailInput.value="";passwordInput.value="";
+} catch(e){authError.textContent=e.message;authError.classList.remove('hidden');}
+authSubmit.textContent=mode==="login"?"Login Now":"Sign Up Now";authSubmit.disabled=false;
+};
+
+document.getElementById('logoutBtn').onclick=()=>signOut(auth);
+
+onAuthStateChanged(auth,(user)=>{
+currentUser=user;
+const loginBtn=document.getElementById('loginBtn');const signupBtn=document.getElementById('signupBtn');const logoutBtn=document.getElementById('logoutBtn');const adminBtn=document.getElementById('adminBtn');const userWelcome=document.getElementById('userWelcome');
+if(user){
+loginBtn.classList.add('hidden');signupBtn.classList.add('hidden');logoutBtn.classList.remove('hidden');
+if(user.email.toLowerCase() === ADMIN_EMAIL.toLowerCase()){
+adminBtn.classList.remove('hidden');
+userWelcome.innerHTML=`<p class='text-yellow-400 text-xs font-bold'>🔒 ADMIN MODE: ${user.email} - You see Admin Panel - Customers cannot!</p>`;
+} else {
+adminBtn.classList.add('hidden');
+userWelcome.innerHTML=`<p class='text-green-400 text-xs'>✓ Customer Logged In: ${user.email} - You can invest & withdraw - No admin access</p>`;
+}
+userWelcome.classList.remove('hidden');
+} else {
+loginBtn.classList.remove('hidden');signupBtn.classList.remove('hidden');logoutBtn.classList.add('hidden');adminBtn.classList.add('hidden');document.getElementById('adminPanel').classList.add('hidden');userWelcome.classList.add('hidden');
+}
+});
+
+window.openDeposit=(plan)=>{
+if(!currentUser){openModal('login');alert("Please Login first to invest in: "+plan);return;}
+currentPlan=plan;
+document.getElementById('selectedPlan').textContent=plan;
+document.getElementById('depositModal').classList.remove('hidden');
+};
+
+window.submitDeposit=async(method)=>{
+if(!currentUser)return;
+const txId=document.getElementById('momoTx').value.trim();
+if(!txId){alert("Please paste MTN Transaction ID after paying to 0761291972");return;}
+const btn=document.getElementById('depositBtn');btn.textContent="Saving to Firebase...";btn.disabled=true;
+try{
+await addDoc(collection(db,"deposits"),{userEmail:currentUser.email,userId:currentUser.uid,plan:currentPlan,method:method,txId:txId,status:"Pending - Check MTN 0761291972",createdAt:serverTimestamp()});
+document.getElementById('depositMsg').textContent="✓ SUCCESS! Deposit for "+currentPlan+" saved! TxID: "+txId+" - Admin will check MTN 0761291972";
+document.getElementById('depositMsg').classList.remove('hidden');
+setTimeout(()=>{document.getElementById('depositModal').classList.add('hidden');document.getElementById('depositMsg').classList.add('hidden');document.getElementById('momoTx').value="";btn.textContent="✓ I PAID - VERIFY & SAVE TO FIREBASE";btn.disabled=false;},3500);
+} catch(e){alert("Firebase Error: "+e.message);btn.textContent="✓ I PAID - VERIFY & SAVE TO FIREBASE";btn.disabled=false;}
+};
+
+window.requestWithdraw=async()=>{
+if(!currentUser){openModal('login');return;}
+const amount=document.getElementById('withdrawAmount').value.trim();const momo=document.getElementById('withdrawMomo').value.trim();
+if(!amount||!momo){alert("Enter Amount + Your MTN Number");return;}
+const btn=document.getElementById('withdrawBtn');btn.textContent="Saving to Firebase...";btn.disabled=true;
+try{
+await addDoc(collection(db,"withdrawals"),{userEmail:currentUser.email,userId:currentUser.uid,amount:amount,momoNumber:momo,plan:currentPlan||"Profit Withdrawal",status:"Pending - Admin will send via 0761291972",createdAt:serverTimestamp()});
+document.getElementById('withdrawMsg').textContent="✓ SUCCESS! Withdrawal $"+amount+" to MTN "+momo+" saved! Admin will send via 0761291972";
+document.getElementById('withdrawMsg').classList.remove('hidden');
+setTimeout(()=>{document.getElementById('withdrawMsg').classList.add('hidden');document.getElementById('withdrawAmount').value="";document.getElementById('withdrawMomo').value="";btn.textContent="Request Withdrawal - Save to Firebase";btn.disabled=false;},4000);
+} catch(e){alert("Error: "+e.message);btn.disabled=false;btn.textContent="Request Withdrawal - Save to Firebase";}
+};
+
+document.getElementById('adminBtn').onclick=()=>{
+const p=document.getElementById('adminPanel');p.classList.toggle('hidden');
+if(!p.classList.contains('hidden')){loadUsers();loadDeposits();loadWithdrawals();p.scrollIntoView({behavior:'smooth'});}
+};
+
+async function loadUsers(){
+const tbody=document.getElementById('usersTable');tbody.innerHTML="<tr><td class='p-1'>Loading users from Firebase...</td></tr>";
+try{
+const snap=await getDocs(collection(db,"users"));let h="";
+snap.forEach(d=>{h+=`<tr class='border-t border-slate-800'><td class='p-2 text-[10px]'>${d.data().email}</td></tr>`;});
+tbody.innerHTML=h||"<tr><td class='p-1'>No users yet</td></tr>";
+} catch(e){tbody.innerHTML=`<tr><td class='p-1 text-red-400'>${e.message}</td></tr>`;}
+}
+
+async function loadDeposits(){
+const tbody=document.getElementById('depositsTable');tbody.innerHTML="<tr><td class='p-1'>Loading deposits to 0761291972...</td></tr>";
+try{
+const snap=await getDocs(collection(db,"deposits"));let h="";
+snap.forEach(d=>{const data=d.data();h+=`<tr class='border-t border-slate-800'><td class='p-1 text-[9px]'>${data.userEmail}</td><td class='p-1 text-[9px] text-yellow-400'>${data.plan}</td><td class='p-1 text-[9px] font-mono'>${data.txId}</td></tr>`;});
+tbody.innerHTML=h||"<tr><td class='p-1'>No deposits yet</td></tr>";
+} catch(e){tbody.innerHTML=`<tr><td class='p-1 text-red-400'>${e.message}</td></tr>`;}
+}
+
+async function loadWithdrawals(){
+const tbody=document.getElementById('withdrawalsTable');tbody.innerHTML="<tr><td class='p-1'>Loading withdrawals...</td></tr>";
+try{
+const snap=await getDocs(collection(db,"withdrawals"));let h="";
+snap.forEach(d=>{const data=d.data();h+=`<tr class='border-t border-slate-800'><td class='p-1 text-[9px]'>${data.userEmail}</td><td class='p-1 text-green-400 font-bold text-[9px]'>$${data.amount}</td><td class='p-1 text-[9px]'>${data.momoNumber}</td></tr>`;});
+tbody.innerHTML=h||"<tr><td class='p-1'>No withdrawals yet</td></tr>";
+} catch(e){tbody.innerHTML=`<tr><td class='p-1 text-red-400'>${e.message}</td></tr>`;}
+}
+
+document.getElementById('refreshUsers').onclick=loadUsers;
+document.getElementById('refreshDeposits').onclick=loadDeposits;
+window.loadWithdrawals=loadWithdrawals;
+</script>
+</body>
+  </html>
